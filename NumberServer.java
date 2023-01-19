@@ -8,13 +8,15 @@ class Handler implements URLHandler {
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
-            return String.format("Number: %d", num);
+            return String.format("Samvrit's number: %d", num);
         } else if (url.getPath().equals("/increment")) {
             num += 1;
             return String.format("Number incremented!");
         } else {
+
             System.out.println("Path: " + url.getPath());
             if (url.getPath().contains("/add")) {
+				//looking for query param so /add?count=5: Query Parameter
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("count")) {
                     num += Integer.parseInt(parameters[1]);
